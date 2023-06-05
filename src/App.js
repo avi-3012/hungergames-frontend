@@ -495,7 +495,7 @@ function App() {
   const Info = () => {
     return (
       <div className="info">
-        <button className="infoHeader">Info</button>
+        <button className="infoHeader">Rules</button>
         <div className="infoBody">
           <div className="infoBodyText">
             <b>Game Rules:</b> (Scroll down)
@@ -552,19 +552,6 @@ function App() {
             </div>
             <br />
             <br />
-            <b>4.1</b> Kill: The winner can kill any other player by using 3 AP.
-            <b>4.2</b> Revive: The winner can revive any other player by using 3
-            AP.
-            <b>4.3</b> Defend: The winner can defend himself by using 2 AP.
-            <b>4.4</b> Support: The winner can support any other player by using
-            2 AP.
-            <b>5.</b> The winner of the round can also describe his action.
-            <b>6.</b> The winner of the round can also give 1 AP to any other
-            player.
-            <b>7.</b> The winner of the round can also take 1 AP from any other
-            player.
-            <br />
-            <br />
           </div>
         </div>
       </div>
@@ -577,7 +564,8 @@ function App() {
       if (sessionStorage.getItem("actionLog")) {
         setActionLog(JSON.parse(sessionStorage.getItem("actionLog")));
       }
-
+    }, []);
+    React.useEffect(() => {
       socket.on("actionLog", (data) => {
         setActionLog([...actionLog, data]);
         sessionStorage.setItem(

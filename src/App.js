@@ -1,9 +1,9 @@
 import "./App.css";
 import React from "react";
-import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils";
 import io from "socket.io-client";
 
-const api = process.env.REACT_APP_API_URL;
+// const api = process.env.REACT_APP_API_URL;
 
 const socket_key = process.env.REACT_APP_API_URL;
 console.log(socket_key);
@@ -94,12 +94,12 @@ function App() {
     }, [socket]);
 
     const ActiveSession = () => {
-      const [pageState, setPageState] = React.useState("action");
+      // const [pageState, setPageState] = React.useState("action");
       const [activePlayer, setActivePlayer] = React.useState("");
       const [activeDescribe, setActiveDescribe] = React.useState(false);
       const [describe, setDescribe] = React.useState("");
-      const [infoPage, setInfoPage] = React.useState(false);
-      const [info, setInfo] = React.useState("");
+      // const [infoPage, setInfoPage] = React.useState(false);
+      // const [info, setInfo] = React.useState("");
       const [move, setMove] = React.useState("");
       const [player, setPlayer] = React.useState("");
       const [event, setEvent] = React.useState("");

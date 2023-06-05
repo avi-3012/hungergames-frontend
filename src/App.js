@@ -574,8 +574,16 @@ function App() {
   const ActionLog = () => {
     const [actionLog, setActionLog] = React.useState([]);
     React.useEffect(() => {
+      if (sessionStorage.getItem("actionLog")) {
+        setActionLog(JSON.parse(sessionStorage.getItem("actionLog")));
+      }
+
       socket.on("actionLog", (data) => {
         setActionLog([...actionLog, data]);
+        sessionStorage.setItem(
+          "actionLog",
+          JSON.stringify([...actionLog, data])
+        );
       });
 
       socket.on("start_game", () => {
@@ -583,9 +591,20 @@ function App() {
           ...actionLog,
           { player: "System", action: "Game Started" },
         ]);
+        sessionStorage.setItem(
+          "actionLog",
+          JSON.stringify([
+            ...actionLog,
+            { player: "System", action: "Game Started" },
+          ])
+        );
       });
       socket.on("turn", (data) => {
         setActionLog([...actionLog, { player: "Turn", action: `${data}` }]);
+        sessionStorage.setItem(
+          "actionLog",
+          JSON.stringify([...actionLog, { player: "Turn", action: `${data}` }])
+        );
       });
       socket.on("roll", ({ reqroll, roll }) => {
         if (roll >= reqroll) {
@@ -593,11 +612,25 @@ function App() {
             ...actionLog,
             { player: "Game", action: `Action Successful` },
           ]);
+          sessionStorage.setItem(
+            "actionLog",
+            JSON.stringify([
+              ...actionLog,
+              { player: "Game", action: `Action Successful` },
+            ])
+          );
         } else {
           setActionLog([
             ...actionLog,
             { player: "Game", action: `Action Failed` },
           ]);
+          sessionStorage.setItem(
+            "actionLog",
+            JSON.stringify([
+              ...actionLog,
+              { player: "Game", action: `Action Failed` },
+            ])
+          );
         }
       });
       socket.on("describe", ({ name, describe }) => {
@@ -605,6 +638,13 @@ function App() {
           ...actionLog,
           { player: `${name}`, action: `${describe}` },
         ]);
+        sessionStorage.setItem(
+          "actionLog",
+          JSON.stringify([
+            ...actionLog,
+            { player: `${name}`, action: `${describe}` },
+          ])
+        );
       });
     }, [actionLog]);
     console.log(window.innerHeight - 400);

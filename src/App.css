@@ -141,17 +141,20 @@
   font-size: 14px;
   color: white;
   font-weight: 600;
+  width: 30px;
 }
 .playerAP {
   font-size: 14px;
   color: white;
   font-weight: 600;
+  width: 30px;
 }
 .playerStatus {
   font-size: 14px;
   color: white;
   font-weight: 600;
   margin-right: 5px;
+  width: 30px;
 }
 
 .score {

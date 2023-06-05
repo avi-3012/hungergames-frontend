@@ -86,10 +86,12 @@ function App() {
         sessionStorage.setItem("session", true);
         setSessionStatus(true);
       });
-      socket.on("end_game", (data) => {
-        sessionStorage.modifyItem("session", false);
+      socket.on("win", (data) => {
+        setTimeout(() => {
+          sessionStorage.modifyItem("session", false);
 
-        setSessionStatus(false);
+          setSessionStatus(false);
+        }, 5000);
       });
     }, [socket]);
 
@@ -260,6 +262,8 @@ function App() {
             }, 50);
           } else {
             setMove(move);
+            setPlayer(player);
+            setEvent(event);
             setReqroll(reqroll);
             setTimeout(() => {
               setRollnumber(Math.floor(Math.random() * 20) + 1);
@@ -606,29 +610,33 @@ function App() {
       });
       socket.on("roll", ({ reqroll, roll }) => {
         if (roll >= reqroll) {
-          setActionLog([
-            ...actionLog,
-            { player: "Game", action: `Action Successful` },
-          ]);
-          sessionStorage.setItem(
-            "actionLog",
-            JSON.stringify([
+          setTimeout(() => {
+            setActionLog([
               ...actionLog,
               { player: "Game", action: `Action Successful` },
-            ])
-          );
+            ]);
+            sessionStorage.setItem(
+              "actionLog",
+              JSON.stringify([
+                ...actionLog,
+                { player: "Game", action: `Action Successful` },
+              ])
+            );
+          }, 1000);
         } else {
-          setActionLog([
-            ...actionLog,
-            { player: "Game", action: `Action Failed` },
-          ]);
-          sessionStorage.setItem(
-            "actionLog",
-            JSON.stringify([
+          setTimeout(() => {
+            setActionLog([
               ...actionLog,
               { player: "Game", action: `Action Failed` },
-            ])
-          );
+            ]);
+            sessionStorage.setItem(
+              "actionLog",
+              JSON.stringify([
+                ...actionLog,
+                { player: "Game", action: `Action Failed` },
+              ])
+            );
+          }, 1000);
         }
       });
       socket.on("describe", ({ name, describe }) => {
@@ -641,6 +649,16 @@ function App() {
           JSON.stringify([
             ...actionLog,
             { player: `${name}`, action: `${describe}` },
+          ])
+        );
+      });
+      socket.on("win", (data) => {
+        setActionLog([...actionLog, { player: "WINNER", action: `${data}` }]);
+        sessionStorage.setItem(
+          "actionLog",
+          JSON.stringify([
+            ...actionLog,
+            { player: "WINNER", action: `${data}` },
           ])
         );
       });

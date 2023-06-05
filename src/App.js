@@ -560,6 +560,16 @@ function App() {
 
   const ActionLog = () => {
     const [actionLog, setActionLog] = React.useState([]);
+    const messagesEndRef = React.useRef(null);
+
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    React.useEffect(() => {
+      scrollToBottom();
+    }, [actionLog]);
+
     React.useEffect(() => {
       if (sessionStorage.getItem("actionLog")) {
         setActionLog(JSON.parse(sessionStorage.getItem("actionLog")));
@@ -671,6 +681,7 @@ function App() {
                   );
                 })
               : "No Action Yet!"}
+            <div ref={messagesEndRef} />
           </div>
         </div>
       </div>

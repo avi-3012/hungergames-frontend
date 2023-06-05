@@ -1,38 +1,477 @@
-.App {
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/bg/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* z-index: -1; */
+}
+
+.navbar {
+  background-color: #ffffff36;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 20px;
+  font-weight: bold;
+  color: white;
+  font-size: small;
+}
+
+.navbutton {
+  cursor: pointer;
+}
+
+.navbutton:hover {
+  color: rgb(255, 106, 0);
+}
+
+.divider {
+  height: 20px;
+  border: 1px solid white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.name {
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.nameInput {
+  height: 30px;
+  width: 150px;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+  outline: none;
+  font-size: 12px;
   text-align: center;
+  background-color: #ffffff36;
+  backdrop-filter: blur(1px);
+  color: #fff;
+  transition: all 0.2s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nameInput::placeholder {
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nameInput:focus {
+  backdrop-filter: blur(4px);
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nameButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  width: 150px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  outline: none;
+  font-size: 12px;
+  background-color: rgb(255, 106, 0);
+  color: #fff;
+}
+
+.arena {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #ffffff30;
+  backdrop-filter: blur(4px);
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  padding: 10px;
+  box-sizing: border-box;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #ffffff30;
+  backdrop-filter: blur(4px);
+  overflow: scroll;
+}
+
+.player {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.playerName {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+}
+.playerAP {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+}
+.playerStatus {
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: rgb(0, 255, 26);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  background-color: antiquewhite;
+}
+
+.sessionStatus {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.sessionReadyButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  width: 150px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  outline: none;
+  font-size: 12px;
+  background-color: rgb(255, 106, 0);
+  color: #fff;
+}
+
+.sessionActive {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sessionActiveHeader {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  height: 40px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.myturn {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.myturninput {
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: #ffffff80;
+  margin-bottom: 10px;
+}
+
+.eventOptions {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 50px;
+}
+.checked {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 4px;
+  background-color: #00000080;
+  color: tomato;
+  cursor: pointer;
+}
+.unchecked {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin: 4px;
+  background-color: #ffffff30;
+  border: 1px solid #ffffff30;
+  cursor: pointer;
+}
+
+.rollnumber {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: x-large;
+  font-weight: 600;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.roll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 800;
+  border: 1px solid #fff;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.roll:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.activeDescribeHeader {
+  text-align: center;
+  color: white;
+  font-size: smaller;
+}
+
+.activeDescribeBody {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 0px 20px;
+  align-items: center;
+}
+
+.describeInput {
+  height: 100px;
+  width: 250px;
+  resize: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #00000070;
+  color: white;
+}
+
+.describeButton {
+  text-align: center;
+  width: 100px;
+  height: 25px;
+  margin-top: 20px;
+  border: 1px solid white;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.describeButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.infoHeader {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  width: 50px;
+}
+
+.infoBody {
+  display: none;
+  font-size: 12px;
+  color: white;
+  /* width: 50px; */
+}
+
+.infoHeader:focus + .infoBody {
+  display: block;
+}
+
+.infoBodyText {
+  margin-top: 10px;
+  width: 300px;
+  height: 500px;
+  overflow: scroll;
+  background-color: #ffffff80;
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  box-sizing: border-box;
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none;
+}
+
+.infoBodyText::-webkit-scrollbar {
+  display: none;
+}
+
+.notmyturnwaiting {
+  width: 100%;
+  display: flex;
+  height: 220px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aquamarine; */
+  color: white;
+  font-weight: bolder;
+}
+
+.notmyturn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 220px;
+  box-sizing: border-box;
+}
+
+.notmyturnresultbox {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  width: 100%;
+  padding: 5px 12px;
+  font-size: 15px;
+  color: white;
+  /* height: 220px; */
+  box-sizing: border-box;
+}
+
+.notmyturnroll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: x-large;
+  font-weight: bolder;
+  color: white;
+}
+
+.actionLog {
+  display: flex;
+  flex-direction: column;
+  background-color: #00000066;
+  width: 300px;
+  margin: 0px auto;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: small;
+  height: 200px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  color: white;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+}
+
+.actionLogBody {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.actionLogBody::-webkit-scrollbar {
+  display: none;
+}
+
+.actionLogHeader {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.actionLogBodyTextAction {
+  display: flex;
+  flex-direction: row;
+}
+.actionLogBodyTextActionPlayer {
+  box-sizing: border-box;
+}
+.actionLogBodyTextActionAction {
+  box-sizing: border-box;
+}
+
+.credits {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  margin: 0px auto;
+  font-size: 11px;
+  color: white;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
 }
